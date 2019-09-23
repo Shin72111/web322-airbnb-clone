@@ -1,0 +1,70 @@
+.airbnb-logo {
+  font-size: 2rem;
+}
+
+header {
+  position: relative;
+}
+header > nav.navbar {
+  position: absolute;
+  top: 15px;
+  width: 90vw;
+  left: 5vw;
+  background: transparent !important;
+  /* color: white !important; */
+}
+.datetimepicker-dummy-wrapper {
+  background-color: white;
+}
+.airbnb-hero {
+  background: url("../images/airbnb-hero.jpg") center/cover no-repeat fixed;
+  height: 100vh;
+  width: 100vw;
+}
+
+.modal label {
+  color: lightblue;
+}
+a.aribnb-navbar-item {
+  cursor: pointer;
+  transition: all 0.6s linear;
+}
+a.aribnb-navbar-item:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+  font-size: 1.2rem;
+  color: #3273dc !important;
+  background-color: transparent !important;
+}
+.modal-title {
+  margin: 20px auto;
+  text-align: center;
+  font-size: 2.3rem;
+  color: #3273dc;
+}
+.signup-container {
+  padding-top: 40px;
+}
+
+footer {
+  margin-top: 1rem;
+  padding: 1.25rem;
+  background: #222;
+}
+footer > .social-icons {
+  margin-top: 15px;
+  font-size: 1.8rem;
+}
+
+footer > .social-icons a:hover {
+  color: hsl(348, 100%, 61%);
+}
+
+@media (min-width: 800px) {
+  .signup-container {
+    width: 500px;
+  }
+  .login-modal > .modal-card {
+    width: 500px;
+  }
+}

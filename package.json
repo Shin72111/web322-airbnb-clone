@@ -1,0 +1,15 @@
+{
+  "name": "airbnb-clone",
+  "version": "1.0.0",
+  "description": "This is a WEB322 project to practice Express framework by cloning Airbnb. ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tam Tran",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^3.1.0"
+  }
+}
