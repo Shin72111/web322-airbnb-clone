@@ -1,9 +1,99 @@
 <main>
   <section class="airbnb-hero">
-    <div>
+    <div class="bookform">
+      <div class="box">
+      <h3 class="title is-3">Book unique places to stay and things to do.</h3>
       <form action="/bookroom">
+        <div class="field">
+          <label class="label">WHERE</label>
+          <div class="control">
+            <input class="input" name="where" type="text" placeholder="Anywhere">
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">CHECK-IN TIME</label>
+          <div class="control">
+            <input class="input has-background-white" type="date" data-label-from="Check-in" data-label-to="Check-out"
+              data-display-mode="dialog" data-color="info" name="bookDate" data-is-range="true">
+          </div>
+        </div>
+
+        <input type="number" class="is-hidden" id="adults" name="adults" value=0>
+        <input type="number" class="is-hidden" id="infants" name="infants"value=0>
+        <div class="field">
+          <label class="label">GUESTS</label>
+          <div class="control">
+            <div class="dropdown is-active">
+              <div class="dropdown-trigger">
+                <button class="button is-fullwidth" aria-haspopup="true" type="button" aria-controls="dropdown-menu3">
+                  <span>Guests</span>
+                  <span class="icon is-small">
+                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                  </span>
+                </button>
+              </div>
+              <div class="dropdown-menu" id="dropdown-menu3" role="menu">
+                <div class="dropdown-content">
+                  <div href="#" class="dropdown-item columns">
+                    <div class="column">
+                      <strong>Adults</strong>
+                    </div>
+                    <div class="column columns">
+
+                      <button class="button is-white column" disabled type="button">
+                        <i class="fas fa-minus-circle has-text-info"></i>
+                      </button>
+                      <span class="column" id="adult-num">0</span>
+                      <button class="button is-white column" type="button">
+                        <i class="fas fa-plus-circle has-text-info"></i>
+                      </button>
+                    </div>
+                  </div>
+
+                  <div href="#" class="dropdown-item columns">
+                    <div class="column">
+                      <strong>Chilren</strong><br>
+                      <span>Ages 2–12</span>
+                    </div>
+                    <div class="column columns">
+
+                      <button class="button is-white column" disabled type="button">
+                        <i class="fas fa-minus-circle has-text-info"></i>
+                      </button>
+                      <span class="column" id="adult-num">0</span>
+                      <button class="button is-white column" type="button">
+                        <i class="fas fa-plus-circle has-text-info"></i>
+                      </button>
+                    </div>
+                  </div>
+
+                  <div href="#" class="dropdown-item columns">
+                    <div class="column">
+                      <strong>Infants</strong><br>
+                      <span>Under 2</span>
+                    </div>
+                    <div class="column columns">
+
+                      <button class="button is-white column" disabled type="button">
+                        <i class="fas fa-minus-circle has-text-info"></i>
+                      </button>
+                      <span class="column" id="adult-num">0</span>
+                      <button class="button is-white column" type="button">
+                        <i class="fas fa-plus-circle has-text-info"></i>
+                      </button>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
       </form>
     </div>
+    </div>
+
   </section>
 </main>
