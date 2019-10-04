@@ -1,0 +1,37 @@
+<section class="airbnb-hero rooms-hero">
+  <div class="box container has-text-centered">
+    <h2 class="title is-2">Explore our rooms</h2>
+    <div class="has-text-left columns is-multiline">
+      {{#each rooms}}
+      <div class="column is-one-third ">
+        <div class="box card">
+          <div class="card-image">
+            <figure class="image">
+              <img src={{this.image.src}} alt={{this.image.alt}}>
+            </figure>
+            <div class="card-content">
+              <div class="content">
+                <h6 class="subtitle is-uppercase is-6 has-text-grey">{{this.info}}</h6>
+                <h6 class="title is-6">{{this.title}}</h6>
+                <p>
+                  ${{this.price}} CAD/night
+                </p>
+                <p>
+                  <span class="icon is-small has-text-primary">
+                    <i class="fas fa-star"></i>
+                  </span>
+                  <strong>{{this.rating}}</strong>
+                  <span class="has-text-grey">({{this.bookCount}})</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+  </div>
+</section>
+<section>
+
+</section>
