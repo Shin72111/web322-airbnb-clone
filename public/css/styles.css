@@ -20,6 +20,23 @@ body {
 
 .home-hero {
   background: url("../images/airbnb-hero.jpg") center/cover no-repeat fixed;
+  min-height: 85vh;
+  margin-bottom: 0 !important;
+}
+
+.promotion {
+  height: 15vh;
+}
+
+.promotion-body {
+  height: 100%;
+  text-align: center;
+  padding: auto;
+  display: flex;
+  align-items: center;
+}
+.promotion-body h1.title {
+  margin: auto;
 }
 
 .signup-hero {
