@@ -38,6 +38,15 @@ document.addEventListener("DOMContentLoaded", () => {
   //   };
   // }
   window.calendars = calendars;
+
+  const rememberLogin = document.querySelector("#remember-text");
+  if (rememberLogin !== null) {
+    rememberLogin.addEventListener("click", () => {
+      document
+        .querySelector('input[name="remember"]')
+        .toggleAttribute("checked");
+    });
+  }
 });
 
 const configGuestBtn = () => {
@@ -107,14 +116,15 @@ const configGuestBtn = () => {
 };
 
 const configGuestDropDown = () => {
-  configGuestBtn();
-  document
-    .querySelector(".dropdown-trigger.book-dropdown")
-    .addEventListener("click", () => {
+  const dropdown = document.querySelector(".dropdown-trigger.book-dropdown");
+  if (dropdown !== null) {
+    configGuestBtn();
+    dropdown.addEventListener("click", () => {
       // Get the target from the "data-target" attribute
       const target = document.querySelector(".dropdown.book-dropdown");
       target.classList.toggle("is-active");
     });
+  }
 };
 
 configGuestDropDown();
