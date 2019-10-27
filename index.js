@@ -76,7 +76,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/dashboard", (req, res) => {
-  res.render("home");
+  res.render("dashboard");
 });
 
 app.get("/signup", (req, res) => {
