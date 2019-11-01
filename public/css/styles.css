@@ -149,3 +149,11 @@ footer > .social-icons a:hover {
 .form-text-margin {
   margin-top: 0.5rem;
 }
+
+@media screen and (max-width: 400px) {
+  div.box.column.is-one-third {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
