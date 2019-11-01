@@ -150,10 +150,32 @@ footer > .social-icons a:hover {
   margin-top: 0.5rem;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 768px) {
   div.box.column.is-one-third {
     width: 100%;
     margin-left: 0;
     margin-right: 0;
   }
+}
+
+@media screen and (max-width: 400px) {
+  section.promotion {
+    height: 150px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+.dashboard-hero {
+  background: url("../images/dashboard-hero.jpg") center/cover no-repeat fixed;
+}
+.dashboard-content {
+  background: white;
+  border-radius: 1rem;
+  position: relative;
+  top: 200px;
+  width: 50%;
+  left: 25%;
+  text-align: center;
+  padding: 2.5rem 1rem;
 }
