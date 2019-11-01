@@ -35,7 +35,9 @@
             <input type="checkbox" class="checkbox" name="remember">
             <span id="remember-text">Remember me</span>
           </div>
-
+          {{#if error }}
+          <span class="has-text-danger">{{ error }}</span>
+          {{/if}}
           <div class="control has-text-centered">
             <button class="button is-primary">Login</button>
           </div>

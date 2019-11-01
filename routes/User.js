@@ -110,7 +110,24 @@ router.post("/login", (req, res) => {
     /*
       TODO: implement authentication
     */
-    res.redirect("/user/dashboard");
+    User.find({ email: req.body.email })
+      .then(user => {
+        if (user.length == 1 && user[0].password == req.body.password)
+          res.redirect("/user/dashboard");
+        else
+          res.render("login", {
+            error:
+              "Incorrect email or password. Type the correct email and password, and try again",
+            ...req.body
+          });
+      })
+      .catch(err => {
+        console.log(err);
+        res.render("login", {
+          error: "Server got some interal error. Please try again later",
+          ...req.body
+        });
+      });
   }
 });
 
