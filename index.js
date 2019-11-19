@@ -12,7 +12,7 @@ app.set("view engine", "handlebars");
 app.use(express.static("public"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(session)({ secret: process.env.SECRET_KEY });
+app.use(session({ secret: process.env.SECRET_KEY }));
 
 app.use((req, res, next) => {
   res.locals.user = req.session.userInfo;
