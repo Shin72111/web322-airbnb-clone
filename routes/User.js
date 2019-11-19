@@ -109,6 +109,9 @@ router.post("/login", (req, res) => {
   } else {
     User.loginUser(req.body.email, req.body.password)
       .then(user => {
+        // Add user to the session
+        req.session.userInfo = user;
+
         res.redirect("/user/dashboard");
       })
       .catch(err => {
@@ -131,6 +134,12 @@ router.post("/login", (req, res) => {
 
 router.get("/dashboard", (req, res) => {
   res.render("dashboard");
+});
+
+router.get("/logout", (req, res) => {
+  //This destorys the session
+  req.session.destroy();
+  res.redirect("/user/login");
 });
 
 module.exports = router;

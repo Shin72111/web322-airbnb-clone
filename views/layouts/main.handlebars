@@ -44,12 +44,18 @@
           <a class="navbar-item aribnb-navbar-item" href="/rooms">
             Rooms
           </a>
+          {{#if user}}
+          <a class="navbar-item aribnb-navbar-item" href="/user/signup">
+            Log out
+          </a>
+          {{else}}
           <a class="navbar-item aribnb-navbar-item" href="/user/signup">
             Sign up
           </a>
           <a class="navbar-item aribnb-navbar-item" href="/user/login">
             Log in
           </a>
+          {{/if}}
         </div>
       </div>
     </nav>
@@ -66,12 +72,14 @@
         <a class="navbar-item has-text-white column aribnb-navbar-item" href="/rooms">
           Rooms
         </a>
+        {{#unless user}}
         <a class="navbar-item has-text-white column aribnb-navbar-item" href="/user/signup">
           Sign up
         </a>
         <a class="navbar-item has-text-white column aribnb-navbar-item" href="/user/login">
           Log in
         </a>
+        {{/unless}}
       </div>
     </nav>
     <div class="columns is-centered social-icons">
