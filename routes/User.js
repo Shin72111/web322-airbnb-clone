@@ -107,26 +107,24 @@ router.post("/login", (req, res) => {
   if (Object.keys(errors).length > 0) {
     res.render("login", { ...errors, ...req.body });
   } else {
-    /*
-      TODO: implement authentication
-    */
-    User.find({ email: req.body.email })
+    User.loginUser(req.body.email, req.body.password)
       .then(user => {
-        if (user.length == 1 && user[0].password == req.body.password)
-          res.redirect("/user/dashboard");
-        else
+        res.redirect("/user/dashboard");
+      })
+      .catch(err => {
+        console.log(`Something went wrong when login:\n${err}`);
+        if (err.code === 2912) {
           res.render("login", {
             error:
               "Incorrect email or password. Type the correct email and password, and try again",
             ...req.body
           });
-      })
-      .catch(err => {
-        console.log(err);
-        res.render("login", {
-          error: "Server got some interal error. Please try again later",
-          ...req.body
-        });
+        } else {
+          res.render("login", {
+            error: "Server got some interal error. Please try again later",
+            ...req.body
+          });
+        }
       });
   }
 });

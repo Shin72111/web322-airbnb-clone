@@ -40,4 +40,32 @@ UserSchema.pre("save", function(next) {
 
 const User = new mongoose.model("User", UserSchema);
 
+User.loginUser = (email, password) => {
+  let _user;
+  const error = {
+    code: 2912 // Authentication Error
+  };
+  return new Promise((resolve, reject) => {
+    User.findOne({ email })
+      .then(user => {
+        if (user) {
+          _user = user;
+          return bcrypt.compare(password, user.password);
+        } else {
+          error.message = "Email not found";
+          reject(error);
+        }
+      })
+      .then(isAuthenticated => {
+        if (isAuthenticated) {
+          resolve(_user);
+        } else {
+          error.message = "Password does not match";
+          reject(error);
+        }
+      })
+      .catch(err => reject(err));
+  });
+};
+
 module.exports = User;
