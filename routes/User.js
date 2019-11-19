@@ -13,7 +13,8 @@ const {
 } = require("../utils/validators");
 
 router.get("/signup", (req, res) => {
-  res.render("signup");
+  if (req.session.userInfo) res.redirect("/user/dashboard");
+  else res.render("signup");
 });
 
 router.post("/signup", (req, res) => {
@@ -85,7 +86,8 @@ router.post("/signup", (req, res) => {
 });
 
 router.get("/login", (req, res) => {
-  res.render("login");
+  if (req.session.userInfo) res.redirect("/user/dashboard");
+  else res.render("login");
 });
 
 router.post("/login", (req, res) => {
