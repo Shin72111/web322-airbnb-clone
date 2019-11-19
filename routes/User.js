@@ -57,7 +57,7 @@ router.post("/signup", (req, res) => {
       firstname: req.body.firstname,
       lastname: req.body.lastname,
       email: req.body.email.toLowerCase(),
-      password: req.body.password, // TODO: hash the password before saving
+      password: req.body.password,
       birthday: new Date(req.body.birthday)
     };
     const user = new User(userInfo);
