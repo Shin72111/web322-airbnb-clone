@@ -70,7 +70,7 @@
             <label class="label" for="file">Room Image</label>
             <div class="file has-name">
               <label class="file-label">
-                <input id="file" class="file-input" required type="file" name="resume">
+                <input id="file" class="file-input" required type="file" name="file" value={{file}}>
                 <span class="file-cta">
                   <span class="file-icon">
                     <i class="fas fa-upload"></i>
@@ -80,7 +80,9 @@
                   </span>
                 </span>
                 <span class="file-name">
-                  {{file}}
+                  {{#if file }}
+                  {{file.name}}
+                  {{/if}}
                 </span>
               </label>
             </div>

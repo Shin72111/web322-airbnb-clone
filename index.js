@@ -3,6 +3,8 @@ const exphbs = require("express-handlebars");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const session = require("express-session");
+const fileupload = require("express-fileupload");
+
 require("dotenv").config();
 
 const app = express();
@@ -13,6 +15,7 @@ app.use(express.static("public"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(session({ secret: process.env.SECRET_KEY }));
+app.use(fileupload());
 
 app.use((req, res, next) => {
   res.locals.user = req.session.userInfo;

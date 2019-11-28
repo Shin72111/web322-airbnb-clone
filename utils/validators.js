@@ -18,10 +18,13 @@ const isValidBirthday = birthdayStr => {
   return today.diff(birthday, "years") >= 18;
 };
 
+const isImage = file => file.mimetype.indexOf("image") != -1;
+
 module.exports = {
   isNullInputField,
   isName,
   isEmail,
   isValidPassword,
-  isValidBirthday
+  isValidBirthday,
+  isImage
 };
