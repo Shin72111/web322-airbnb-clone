@@ -38,10 +38,10 @@
                 <div class="select is-rounded is-fullwidth">
                   <select name="city">
                     <option>Select city</option>
-                    <option value="Toronto">Toronto</option>
-                    <option value="Waterloo">Waterloo</option>
-                    <option value="Vancouver">Vancouver</option>
-                    <option value="Ottawa">Ottawa</option>
+                    <option {{#ifvalue city value="Toronto"}}selected{{/ifvalue}} value="Toronto">Toronto</option>
+                    <option {{#ifvalue city value="Waterloo"}}selected{{/ifvalue}} value="Waterloo">Waterloo</option>
+                    <option {{#ifvalue city value="Vancouver"}}selected{{/ifvalue}} value="Vancouver">Vancouver</option>
+                    <option {{#ifvalue city value="Ottawa"}}selected{{/ifvalue}} value="Ottawa">Ottawa</option>
                   </select>
                 </div>
                 <span class="icon is-left">

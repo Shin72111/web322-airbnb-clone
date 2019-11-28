@@ -8,8 +8,19 @@ const fileupload = require("express-fileupload");
 require("dotenv").config();
 
 const app = express();
+const handlebars = exphbs.create({
+  helpers: {
+    ifvalue: function(conditional, options) {
+      if (conditional === options.hash.value) {
+        return options.fn(this);
+      } else {
+        return options.inverse(this);
+      }
+    }
+  }
+});
 
-app.engine("handlebars", exphbs());
+app.engine("handlebars", handlebars.engine);
 app.set("view engine", "handlebars");
 app.use(express.static("public"));
 app.use(bodyParser.json());

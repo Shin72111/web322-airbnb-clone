@@ -51,8 +51,8 @@ exports.postAddRoom = (req, res) => {
     req.files.file
       .mv(`public/rooms/${formData.image}`)
       .then(() => {
-        const room = new Room(formData);
-        room.save();
+        const newRoom = new Room(formData);
+        return newRoom.save();
       })
       .then(room => {
         res.redirect(`/rooms/${room._id}`);
