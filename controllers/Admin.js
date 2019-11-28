@@ -48,9 +48,12 @@ exports.postAddRoom = (req, res) => {
       description: req.body.description,
       image: `room-${uuidv1()}${path.parse(req.files.file.name).ext}`
     };
-    const room = new Room(formData);
-    room
-      .save()
+    req.files.file
+      .mv(`public/rooms/${formData.image}`)
+      .then(() => {
+        const room = new Room(formData);
+        room.save();
+      })
       .then(room => {
         res.redirect(`/rooms/${room._id}`);
       })
