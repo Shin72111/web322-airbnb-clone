@@ -38,7 +38,7 @@ const userRouter = require("./routes/User");
 const adminRouter = require("./routes/Admin");
 const generalRouter = require("./routes/General");
 const { redirectAdminRoutes } = require("./utils/redirectMiddleware");
-app.use("/admin/", adminRouter);
+app.use("/admin/", redirectAdminRoutes, adminRouter);
 app.use("/user/", userRouter);
 app.use("/", generalRouter);
 
