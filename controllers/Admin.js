@@ -61,7 +61,7 @@ exports.postAddRoom = (req, res) => {
         return newRoom.save();
       })
       .then(room => {
-        res.redirect(`/rooms/${room._id}`);
+        res.redirect(`/room/${room._id}`);
       })
       .catch(err => {
         console.log(`Something went wrong:\n${err}`);

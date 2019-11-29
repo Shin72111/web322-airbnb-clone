@@ -6,23 +6,37 @@
       <div class="column is-one-third ">
         <div class="box card">
           <div class="card-image">
-            <figure class="image">
-              <img src={{this.image.src}} alt={{this.image.alt}}>
-            </figure>
+            <a href="/room/{{this._id}}">
+              <figure class="image">
+                <img src={{this.image}} alt="{{this.title}} image">
+              </figure>
+            </a>
             <div class="card-content">
               <div class="content">
-                <h6 class="subtitle is-uppercase is-6 has-text-grey">{{this.info}}</h6>
+                <h6 class="subtitle is-uppercase is-6 has-text-grey">{{this.city}}</h6>
                 <h6 class="title is-6">{{this.title}}</h6>
-                <p>
-                  ${{this.price}} CAD/night
-                </p>
-                <p>
-                  <span class="icon is-small has-text-primary">
-                    <i class="fas fa-star"></i>
+                <p class="columns is-vcentered">
+                  <span class="column is-8">
+                    ${{this.price}} CAD/night
                   </span>
-                  <strong>{{this.rating}}</strong>
-                  <span class="has-text-grey">({{this.bookCount}})</span>
+
+                  {{#if ../user}}
+                  {{#if ../user.isAdmin }}
+                  <a class="column is-4  button is-primary" style="padding:0.5rem" href="/admin/edit/{{this._id}}">
+                    Edit
+                  </a>
+                  {{else}}
+                  <a class="column is-4  button is-primary" style="padding:0.5rem" href="/book/{{this._id}}">
+                    Book
+                  </a>
+                  {{/if}}
+                  {{else}}
+                  <a class="column is-4  button is-primary" style="padding:0.5rem" href="/book/{{this._id}}">
+                    Book
+                  </a>
+                  {{/if}}
                 </p>
+
               </div>
             </div>
           </div>

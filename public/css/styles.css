@@ -95,6 +95,10 @@ footer > .social-icons a:hover {
   margin: auto 1rem;
 }
 
+h6.title.is-6 {
+  height: 36px;
+}
+
 @media (min-width: 576px) {
   section.signup-hero,
   section.login-hero {
@@ -144,6 +148,9 @@ footer > .social-icons a:hover {
     top: -16px;
     left: -16px;
     z-index: -1;
+  }
+  .image {
+    height: 50%;
   }
 }
 .form-text-margin {

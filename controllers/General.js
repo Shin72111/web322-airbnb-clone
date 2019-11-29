@@ -1,8 +1,18 @@
+const Room = require("../models/Room");
+
 exports.getHomePage = (req, res) => {
   res.render("General/home");
 };
 
 exports.getRoom = (req, res) => {
+  Room.find({})
+    .then(rooms => {
+      res.render("General/rooms", { rooms });
+    })
+    .catch(err => {
+      console.log(`Something went wrong:\n${err}`);
+      res.redirect("/");
+    });
   const rooms = [
     {
       image: {
@@ -78,5 +88,5 @@ exports.getRoom = (req, res) => {
     }
   ];
 
-  res.render("General/rooms", { rooms });
+  // res.render("General/rooms", { rooms });
 };
