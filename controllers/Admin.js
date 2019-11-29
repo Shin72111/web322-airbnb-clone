@@ -2,7 +2,31 @@ const Room = require("../models/Room");
 const { isNullInputField, isImage } = require("../utils/validators");
 const uuidv1 = require("uuid/v1");
 const path = require("path");
+const fs = require("fs");
 
+const validateRoomInfo = data => {
+  const errors = {};
+
+  if (isNullInputField(data.title)) {
+    errors.titleError = "Title is required";
+  }
+
+  if (isNullInputField(data.price)) {
+    errors.priceError = "Price is required";
+  } else if (isNaN(data.price)) {
+    errors.priceError = "Price must be a number";
+  }
+
+  if (isNullInputField(data.city) || data.city === "Select city") {
+    errors.cityError = "City is required";
+  }
+
+  if (isNullInputField(data.description)) {
+    errors.descriptionError = "Description is required";
+  }
+
+  return errors;
+};
 exports.getDashboard = (req, res) => {
   res.render("Admin/dashboard");
 };
@@ -12,25 +36,7 @@ exports.getAddRoom = (req, res) => {
 };
 
 exports.postAddRoom = (req, res) => {
-  const errors = {};
-
-  if (isNullInputField(req.body.title)) {
-    errors.titleError = "Title is required";
-  }
-
-  if (isNullInputField(req.body.price)) {
-    errors.priceError = "Price is required";
-  } else if (isNaN(req.body.price)) {
-    errors.priceError = "Price must be a number";
-  }
-
-  if (isNullInputField(req.body.city) || req.body.city === "Select city") {
-    errors.cityError = "City is required";
-  }
-
-  if (isNullInputField(req.body.description)) {
-    errors.descriptionError = "Description is required";
-  }
+  const errors = validateRoomInfo(req.body);
 
   if (isNullInputField(req.files)) {
     errors.fileError = "Image is required";
@@ -63,6 +69,68 @@ exports.postAddRoom = (req, res) => {
           error: "Something went wrong internally",
           ...req.body
         });
+      });
+  }
+};
+
+exports.getEditRoom = (req, res) => {
+  Room.findById(req.params.id)
+    .then(room => {
+      if (room) {
+        res.render("Admin/editRoom", { oldImage: room.image, ...room._doc });
+      } else {
+        res.redirect("Admin/dashboard");
+      }
+    })
+    .catch(err => {
+      res.redirect("Admin/dashboard");
+    });
+};
+
+exports.putEditRoom = (req, res) => {
+  const errors = validateRoomInfo(req.body);
+
+  if (req.files && !isImage(req.files.file)) {
+    errors.fileError = "The file needs to be image type";
+  }
+  if (Object.keys(errors).length > 0) {
+    res.render("Admin/editRoom", { ...errors, ...req.body });
+  } else {
+    let oldRoomImage = null;
+
+    Room.findById(req.params.id)
+      .then(room => {
+        if (room) {
+          room.title = req.body.title;
+          room.price = req.body.price;
+          room.city = req.body.city;
+          room.description = req.body.description;
+
+          if (req.files) {
+            oldRoomImage = room.image;
+            room.image = `room-${uuidv1()}${
+              path.parse(req.files.file.name).ext
+            }`;
+          }
+          return room.save();
+        } else {
+          res.redirect("/admin/dashboard");
+        }
+      })
+      .then(room => {
+        if (req.files) {
+          return req.files.file.mv(`public/rooms/${room.image}`);
+        } else {
+          res.redirect("/admin/dashboard");
+        }
+      })
+      .then(() => {
+        fs.unlink(`public/rooms/${oldRoomImage}`, () => {});
+        res.redirect("/admin/dashboard");
+      })
+      .catch(err => {
+        console.log(err);
+        res.redirect("/admin/dashboard");
       });
   }
 };

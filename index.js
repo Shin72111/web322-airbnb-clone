@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const session = require("express-session");
 const fileupload = require("express-fileupload");
-
+const methodOverride = require("method-override");
 require("dotenv").config();
 
 const app = express();
@@ -27,6 +27,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(session({ secret: process.env.SECRET_KEY }));
 app.use(fileupload());
+app.use(methodOverride("_method"));
 
 app.use((req, res, next) => {
   res.locals.user = req.session.userInfo;
@@ -37,7 +38,7 @@ const userRouter = require("./routes/User");
 const adminRouter = require("./routes/Admin");
 const generalRouter = require("./routes/General");
 const { redirectAdminRoutes } = require("./utils/redirectMiddleware");
-app.use("/admin/", redirectAdminRoutes, adminRouter);
+app.use("/admin/", adminRouter);
 app.use("/user/", userRouter);
 app.use("/", generalRouter);
 

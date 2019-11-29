@@ -2,8 +2,8 @@
   <div class="container is-fluid columns">
     <div class="column is-6 is-offset-one-quarter ">
       <div class="box">
-        <h2 class="title is-2 has-text-success has-text-centered">Add Room</h2>
-        <form action="/admin/add" method="POST" enctype="multipart/form-data">
+        <h2 class="title is-2 has-text-success has-text-centered">Edit Room</h2>
+        <form action="/admin/edit/{{_id}}?_method=PUT" method="POST" enctype="multipart/form-data">
           <div class="field">
             <label class="label">Title</label>
             <div class="control has-icons-left has-icons-right">
@@ -70,7 +70,7 @@
             <label class="label" for="file">Room Image</label>
             <div class="file has-name">
               <label class="file-label">
-                <input id="file" class="file-input" required type="file" name="file" value={{file}}>
+                <input id="file" class="file-input" type="file" name="file" value={{file}}>
                 <span class="file-cta">
                   <span class="file-icon">
                     <i class="fas fa-upload"></i>
@@ -86,6 +86,12 @@
                 </span>
               </label>
             </div>
+            <br>
+            <div>
+              <!-- Little trick to rerender the image when the data validation failed! -->
+              <input type="text" style="display:none" name="oldImage" value={{oldImage}}>
+              <img src="/rooms/{{oldImage}}" alt="{{title}} image">
+            </div>
             {{#if fileError }}
             <span class="has-text-danger">{{ fileError }}</span>
             {{/if}}
@@ -95,7 +101,7 @@
           <span class="has-text-danger">{{ error }}</span>
           {{/if}}
           <div class="control has-text-centered">
-            <button class="button is-primary">Add room</button>
+            <button class="button is-primary">Edit room</button>
           </div>
 
 
