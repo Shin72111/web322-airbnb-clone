@@ -45,6 +45,15 @@
             Rooms
           </a>
           {{#if user}}
+          {{#if user.isAdmin}}
+          <a class="navbar-item aribnb-navbar-item" href="/admin/dashboard">
+            Dashboard
+          </a>
+          {{else}}
+          <a class="navbar-item aribnb-navbar-item" href="/user/dashboard">
+            Dashboard
+          </a>
+          {{/if}}
           <a class="navbar-item aribnb-navbar-item" href="/user/logout">
             Log out
           </a>
