@@ -138,3 +138,15 @@ if (fileInput) {
     }
   };
 }
+
+const searchRoom = document.querySelector("#searchRoom");
+
+if (searchRoom) {
+  const select = document.querySelector("#searchRoom select");
+  select.addEventListener("change", () => {
+    if (select.value == "select") {
+      select.value = "";
+    }
+    searchRoom.submit();
+  });
+}

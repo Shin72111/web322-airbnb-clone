@@ -11,7 +11,22 @@ exports.getRoom = (req, res) => {
   }
   Room.find(query)
     .then(rooms => {
-      res.render("General/rooms", { rooms });
+      res.render("General/rooms", { rooms, city: req.query.city });
+    })
+    .catch(err => {
+      console.log(`Something went wrong:\n${err}`);
+      res.redirect("/");
+    });
+};
+
+exports.getSingleRoom = (req, res) => {
+  Room.findById(req.params.id)
+    .then(room => {
+      if (room) {
+        res.render("General/singleRoom", { ...room._doc });
+      } else {
+        res.redirect("/");
+      }
     })
     .catch(err => {
       console.log(`Something went wrong:\n${err}`);

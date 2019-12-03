@@ -1,6 +1,24 @@
 <section class="airbnb-hero rooms-hero">
   <div class="box container has-text-centered">
     <h2 class="title is-2">Explore our rooms</h2>
+    <div>
+      <form id="searchRoom" action="">
+        <div class="field">
+          <label class="label">Search by city</label>
+          <div class="control has-text-centered">
+            <div class="select is-rounded">
+              <select name="city">
+                <option value="select">Select city</option>
+                <option {{#ifvalue city value="Toronto"}}selected{{/ifvalue}} value="Toronto">Toronto</option>
+                <option {{#ifvalue city value="Waterloo"}}selected{{/ifvalue}} value="Waterloo">Waterloo</option>
+                <option {{#ifvalue city value="Vancouver"}}selected{{/ifvalue}} value="Vancouver">Vancouver</option>
+                <option {{#ifvalue city value="Ottawa"}}selected{{/ifvalue}} value="Ottawa">Ottawa</option>
+              </select>
+            </div>
+          </div>
+      </form>
+    </div>
+    <br>
     <div class="has-text-left columns is-multiline">
       {{#each rooms}}
       <div class="column is-one-third ">
@@ -8,7 +26,7 @@
           <div class="card-image">
             <a href="/room/{{this._id}}">
               <figure class="image">
-                <img src={{this.image}} alt="{{this.title}} image">
+                <img src="/rooms/{{this.image}}" alt=" {{this.title}} image">
               </figure>
             </a>
             <div class="card-content">

@@ -99,6 +99,20 @@ h6.title.is-6 {
   height: 36px;
 }
 
+.dashboard-hero {
+  background: url("../images/dashboard-hero.jpg") center/cover no-repeat fixed;
+}
+.dashboard-content {
+  background: white;
+  border-radius: 1rem;
+  position: relative;
+  top: 200px;
+  width: 50%;
+  left: 25%;
+  text-align: center;
+  padding: 2.5rem 1rem;
+}
+
 @media (min-width: 576px) {
   section.signup-hero,
   section.login-hero {
@@ -131,6 +145,19 @@ h6.title.is-6 {
     width: 90vw;
     left: 5vw;
     background: transparent !important;
+  }
+  .single-room-content {
+    background: white;
+    border-radius: 1rem;
+    position: relative;
+    top: 80px;
+    width: 50%;
+    left: 25%;
+    text-align: center;
+    padding: 2.5rem 1rem;
+  }
+  .single-room {
+    padding-bottom: 120px;
   }
 }
 
@@ -171,18 +198,4 @@ h6.title.is-6 {
     margin-left: 0;
     margin-right: 0;
   }
-}
-
-.dashboard-hero {
-  background: url("../images/dashboard-hero.jpg") center/cover no-repeat fixed;
-}
-.dashboard-content {
-  background: white;
-  border-radius: 1rem;
-  position: relative;
-  top: 200px;
-  width: 50%;
-  left: 25%;
-  text-align: center;
-  padding: 2.5rem 1rem;
 }
