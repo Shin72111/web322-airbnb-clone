@@ -101,12 +101,14 @@ h6.title.is-6 {
 
 .dashboard-hero {
   background: url("../images/dashboard-hero.jpg") center/cover no-repeat fixed;
+  padding-bottom: 50px;
 }
 .dashboard-content {
   background: white;
   border-radius: 1rem;
   position: relative;
-  top: 200px;
+  top: 100px;
+  margin-bottom: 10rem;
   width: 50%;
   left: 25%;
   text-align: center;

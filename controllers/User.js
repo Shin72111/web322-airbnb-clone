@@ -1,5 +1,6 @@
 const sendEmail = require("../utils/email");
 const User = require("../models/User");
+const Booking = require("../models/Booking");
 
 const {
   isNullInputField,
@@ -138,7 +139,15 @@ exports.postLogin = (req, res) => {
 };
 
 exports.getDashboard = (req, res) => {
-  res.render("User/dashboard");
+  Booking.find({ userID: req.session.userInfo._id })
+    .sort({ createdOn: -1 })
+    .then(bookings => {
+      res.render("User/dashboard", { bookings });
+    })
+    .catch(err => {
+      console.log(`Something went wrong when fetch the bookings:\n${err}`);
+      res.render("User/dashboard");
+    });
 };
 
 exports.logout = (req, res) => {
