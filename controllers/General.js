@@ -1,4 +1,5 @@
 const Room = require("../models/Room");
+const Booking = require("../models/Booking");
 
 exports.getHomePage = (req, res) => {
   res.render("General/home");
@@ -31,5 +32,30 @@ exports.getSingleRoom = (req, res) => {
     .catch(err => {
       console.log(`Something went wrong:\n${err}`);
       res.redirect("/");
+    });
+};
+
+exports.bookRoom = (req, res) => {
+  Room.findById(req.params.id)
+    .then(room => {
+      if (room) {
+        const bookingData = {
+          roomID: room._id,
+          userID: req.session.userInfo._id,
+          title: room.title,
+          price: room.price,
+          city: room.city,
+          image: room.image
+        };
+
+        const booking = new Booking(bookingData);
+        booking.save().then(() => res.redirect("/user/dashboard"));
+      } else {
+        res.redirect("/rooms");
+      }
+    })
+    .catch(err => {
+      console.log(`Something went wrong when booking:\n${err}`);
+      res.redirect("/rooms");
     });
 };

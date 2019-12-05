@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const BookedSchema = new mongoose.Schema({
+const BookingSchema = new mongoose.Schema({
   roomID: {
     type: String,
     required: true
@@ -31,6 +31,6 @@ const BookedSchema = new mongoose.Schema({
   }
 });
 
-const Booked = new mongoose.model("Booked", BookedSchema);
+const Booking = new mongoose.model("Booking", BookingSchema);
 
-module.exports = Booked;
+module.exports = Booking;
