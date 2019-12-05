@@ -28,7 +28,14 @@ const validateRoomInfo = data => {
   return errors;
 };
 exports.getDashboard = (req, res) => {
-  res.render("Admin/dashboard");
+  Room.find({})
+    .then(rooms => {
+      res.render("Admin/dashboard", { rooms });
+    })
+    .catch(err => {
+      console.log(`Something went wrong:\n${err}`);
+      res.redirect("/");
+    });
 };
 
 exports.getAddRoom = (req, res) => {
